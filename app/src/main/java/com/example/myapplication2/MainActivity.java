@@ -15,30 +15,37 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Button click;
     EditText chno,apikey;
-    String s1,s2;
+    public static String s1,s2;
     public static String s3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Boolean isFirstTime;
+        s1="";
+        s2="";
+        s3="";
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        click=(Button)findViewById(R.id.fetch);
+        chno=(EditText)findViewById(R.id.cno);
+        apikey=(EditText)findViewById(R.id.key);
         final SharedPreferences app_preferences = getSharedPreferences("file",MODE_PRIVATE);
         final SharedPreferences.Editor editor = app_preferences.edit();
         isFirstTime = app_preferences.getBoolean("isFirstTime", true);
         if(isFirstTime) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            click=(Button)findViewById(R.id.fetch);
-            chno=(EditText)findViewById(R.id.cno);
-            apikey=(EditText)findViewById(R.id.key);
+
+
             click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     s1 = chno.getText().toString();
                     s2 = apikey.getText().toString();
                     s3 = "https://api.thingspeak.com/channels/" + s1 + "/feeds.json?api_key=" + s2 + "&results=2";
-                    Intent intent = new Intent(MainActivity.this, sec.class);
                     editor.putString("s1",s1);
                     editor.putString("s2",s2);
+                    editor.putString("s3",s3);
+                    editor.commit();
+                    Intent intent = new Intent(MainActivity.this, sec.class);
                     Toast.makeText(getApplicationContext(),app_preferences.getString("s1",s1),Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();
