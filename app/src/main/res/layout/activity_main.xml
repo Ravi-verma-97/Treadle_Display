@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter channel no."
+        android:layout_marginTop="200sp"
+        android:id="@+id/cno"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        />
+
+    <EditText
+        android:id="@+id/key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="50sp"
+        android:layout_below="@+id/cno"
+        android:hint="Enter API key "
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetch data"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/key"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/fetch"
+        />
+
+</RelativeLayout>
